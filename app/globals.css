@@ -82,6 +82,10 @@ body { margin: 0; background: var(--background); color: var(--foreground); font-
 .product-asset-grid img, .product-asset-grid span { width: 40px; height: 40px; flex: 0 0 40px; }
 .product-asset-grid img { object-fit: contain; border: 1px solid hsl(var(--border)); border-radius: .5rem; background: hsl(var(--background)); padding: .2rem; }
 .admin-shell { animation: admin-enter .55s cubic-bezier(.22,1,.36,1) both; }
+.admin-page-heading { animation: admin-page-in .45s cubic-bezier(.22,1,.36,1) both; }
+.admin-page-heading input:focus { transform: translateY(-1px); }
+@keyframes admin-page-in { from { opacity: 0; transform: translateY(8px) scale(.99); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@media (prefers-reduced-motion: reduce) { .admin-page-heading { animation: none; } .admin-page-heading input:focus { transform: none; } }
 .admin-nav-item { animation: admin-rise .4s both; }
 .admin-nav-item:hover { transform: translateX(3px); }
 @keyframes admin-enter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
