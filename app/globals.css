@@ -83,6 +83,9 @@ body { margin: 0; background: var(--background); color: var(--foreground); font-
 .product-asset-grid img { object-fit: contain; border: 1px solid hsl(var(--border)); border-radius: .5rem; background: hsl(var(--background)); padding: .2rem; }
 .admin-shell { animation: admin-enter .55s cubic-bezier(.22,1,.36,1) both; }
 .admin-page-heading { animation: admin-page-in .45s cubic-bezier(.22,1,.36,1) both; }
+.admin-overview-card { transition: transform .3s ease, border-color .3s ease, background-color .3s ease, box-shadow .3s ease; }
+.admin-overview-card:hover { transform: translateY(-3px); border-color: rgba(17,155,154,.45); background-color: color-mix(in srgb, var(--card) 92%, var(--primary)); box-shadow: 0 16px 32px rgba(8,37,43,.08); }
+@media (prefers-reduced-motion: reduce) { .admin-overview-card, .admin-overview-card:hover { transition: none; transform: none; } }
 .admin-page-heading input:focus { transform: translateY(-1px); }
 @keyframes admin-page-in { from { opacity: 0; transform: translateY(8px) scale(.99); } to { opacity: 1; transform: translateY(0) scale(1); } }
 @media (prefers-reduced-motion: reduce) { .admin-page-heading { animation: none; } .admin-page-heading input:focus { transform: none; } }
