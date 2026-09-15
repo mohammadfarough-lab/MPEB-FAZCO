@@ -81,6 +81,12 @@ body { margin: 0; background: var(--background); color: var(--foreground); font-
 .product-asset-grid { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
 .product-asset-grid img, .product-asset-grid span { width: 40px; height: 40px; flex: 0 0 40px; }
 .product-asset-grid img { object-fit: contain; border: 1px solid hsl(var(--border)); border-radius: .5rem; background: hsl(var(--background)); padding: .2rem; }
+.admin-shell { animation: admin-enter .55s cubic-bezier(.22,1,.36,1) both; }
+.admin-nav-item { animation: admin-rise .4s both; }
+.admin-nav-item:hover { transform: translateX(3px); }
+@keyframes admin-enter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes admin-rise { from { opacity: 0; transform: translateX(-6px); } to { opacity: 1; transform: translateX(0); } }
+@media (prefers-reduced-motion: reduce) { .admin-shell, .admin-nav-item { animation: none; } .admin-nav-item { transition: none; } }
 .service-card { transition: background-color .45s ease, border-color .45s ease, transform .45s ease, box-shadow .45s ease, color .35s ease; }
 .service-card:hover { background: rgba(0,0,0,.82); border-color: rgba(255,255,255,.38); color: white; box-shadow: 0 24px 64px rgba(0,0,0,.28); }
 .service-card:hover h3, .service-card:hover p, .service-card:hover span { color: white; }
