@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { CheckCircle2, LayoutDashboard, Search, Sparkles, Package, Image as ImageIcon, Settings2, UsersRound } from 'lucide-react'
 import { createUser, deleteBanner, deleteProduct, deleteShowcaseItem, deleteUser, saveBanner, saveMotionSettings, saveProduct, saveShopCopy, saveShowcaseItem, updateUser } from '@/app/admin/actions'
 
@@ -13,7 +13,11 @@ const input = 'h-9 rounded-lg border border-border bg-background px-2.5 text-sm 
 const button = 'rounded-lg bg-primary px-3 py-2 text-xs font-medium text-primary-foreground transition hover:opacity-90'
 
 export function AdminWorkspace({ products, banners, showcaseItems, settings, users }: { products: Product[]; banners: Banner[]; showcaseItems: ShowcaseItem[]; settings: Setting[]; users: UserRow[] }) {
-  const [tab, setTab] = useState(() => typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('section') || 'overview' : 'overview')
+  const [tab, setTab] = useState('overview')
+  useEffect(() => {
+    const section = new URLSearchParams(window.location.search).get('section')
+    if (section) setTab(section)
+  }, [])
   const [message, setMessage] = useState('')
   const [busy, setBusy] = useState(false)
   const [query, setQuery] = useState('')
