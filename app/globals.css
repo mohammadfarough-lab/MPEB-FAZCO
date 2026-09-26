@@ -86,6 +86,9 @@ body { margin: 0; background: var(--background); color: var(--foreground); font-
 .admin-overview-card, .admin-search-result { transition: transform .25s ease, border-color .25s ease, background-color .25s ease, box-shadow .25s ease; }
 .admin-search-result:hover, .admin-search-result:focus-visible { transform: translateX(3px); background: hsl(var(--muted)); outline: none; }
 .admin-search-result:active { transform: scale(.985); }
+.admin-search-preview { animation: admin-preview-in .2s ease-out both; }
+@keyframes admin-preview-in { from { opacity: 0; transform: translateY(-4px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@media (prefers-reduced-motion: reduce) { .admin-search-preview { animation: none; } }
 .admin-shortlist { animation: admin-page-in .35s both; }
 .technical-editor { grid-template-columns: repeat(1, minmax(0, 1fr)); }
 @media (min-width: 768px) { .technical-editor { grid-template-columns: repeat(2, minmax(0, 1fr)); } .technical-editor > .technical-editor-heading, .technical-editor > textarea[name="description"], .technical-editor > textarea[name="uses"], .technical-editor > textarea[name="features"], .technical-editor > textarea[name="dimensions"], .technical-editor > textarea[name="cct"], .technical-editor > textarea[name="sectionDetail"], .technical-editor > textarea[name="finish"], .technical-editor > textarea[name="installation"], .technical-editor > .technical-assets { grid-column: span 2; } }
