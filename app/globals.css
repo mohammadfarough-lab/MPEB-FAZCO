@@ -132,6 +132,32 @@ body { margin: 0; background: var(--background); color: var(--foreground); font-
 @media (prefers-reduced-motion: reduce) { .admin-shortlist button { transition: none; } .admin-shortlist button:hover { transform: none; } }
 .admin-overview-card:hover { transform: translateY(-3px); border-color: rgba(17,155,154,.45); background-color: color-mix(in srgb, var(--card) 92%, var(--primary)); box-shadow: 0 16px 32px rgba(8,37,43,.08); }
 @media (prefers-reduced-motion: reduce) { .admin-overview-card, .admin-overview-card:hover { transition: none; transform: none; } }
+
+/* Admin Control Center: high-contrast white, black, and turquoise glass */
+.admin-shell { --admin-ink: #071114; --admin-navy: #123248; --admin-teal: #0f766e; --admin-cyan: #0e7490; }
+.admin-sidebar, .admin-page-heading { color: var(--admin-ink); background: linear-gradient(145deg, #ffffff 0%, #f4f8f8 62%, #e7f4f3 100%); border-color: #c9dcda; box-shadow: 0 18px 48px rgba(7,17,20,.1); }
+.admin-page-heading { background: linear-gradient(135deg, #ffffff 0%, #f4f9fa 52%, #e7f5f4 100%); }
+.admin-nav-item { color: #344b50; border-color: transparent; }
+.admin-nav-item:hover { color: #071114; border-color: #8bc8c2; background: linear-gradient(100deg, rgba(255,255,255,.96), rgba(211,242,239,.95)); box-shadow: 0 8px 24px rgba(14,116,144,.13), inset 0 1px rgba(255,255,255,.9); }
+.admin-nav-item:focus-visible { outline-color: #0e7490; }
+.admin-nav-item[class*="bg-primary"] { color: #ffffff; background: linear-gradient(100deg, #0f766e, #0e7490); border-color: #075e62; box-shadow: 0 10px 25px rgba(14,116,144,.22), inset 0 1px rgba(255,255,255,.28); }
+.admin-overview-card:hover { border-color: #63bdb5; background: linear-gradient(135deg, #ffffff, #e8f7f5); box-shadow: 0 16px 36px rgba(14,116,144,.16), inset 0 1px rgba(255,255,255,.95); }
+.admin-topbar, .admin-section-search input { color: #071114; background: rgba(255,255,255,.96); border-color: #b9d4d2; box-shadow: 0 8px 24px rgba(7,17,20,.07); }
+.admin-section-search input::placeholder { color: #668084; }
+.admin-section-search input:hover { border-color: #63bdb5; box-shadow: 0 0 0 3px rgba(14,116,144,.08), 0 10px 26px rgba(14,116,144,.12); }
+.admin-section-search input:focus { border-color: #0e7490; box-shadow: 0 0 0 4px rgba(14,116,144,.16), inset 0 1px rgba(255,255,255,.9); }
+.admin-search-preview { color: #071114; background: #f7fbfb; border-color: #b9d4d2; box-shadow: 0 24px 55px rgba(7,17,20,.2); }
+.admin-search-preview .admin-search-result:hover, .admin-search-preview .admin-search-result:focus-visible { color: #071114; background: linear-gradient(100deg, #ffffff, #dff5f2); box-shadow: inset 3px 0 #0e7490; }
+.admin-search-preview .text-muted-foreground { color: #547176; }
+.dark .admin-sidebar, .dark .admin-page-heading { color: #edfafa; background: linear-gradient(145deg, #101a20, #142b35 62%, #123f43); border-color: #315d62; }
+.dark .admin-nav-item { color: #b8d0d0; }
+.dark .admin-nav-item:hover { color: #f3ffff; background: linear-gradient(100deg, rgba(255,255,255,.1), rgba(24,125,126,.42)); border-color: #55b8b2; }
+.dark .admin-topbar, .dark .admin-section-search input { color: #f3ffff; background: #132127; border-color: #38666a; }
+.dark .admin-section-search input:hover, .dark .admin-section-search input:focus { border-color: #5bd0c4; box-shadow: 0 0 0 4px rgba(91,208,196,.18), 0 10px 25px rgba(0,0,0,.22); }
+.dark .admin-search-preview { color: #f3ffff; background: #162a31; border-color: #477b7e; }
+.dark .admin-search-preview .admin-search-result:hover, .dark .admin-search-preview .admin-search-result:focus-visible { color: #f3ffff; background: linear-gradient(100deg, rgba(255,255,255,.1), rgba(24,125,126,.4)); box-shadow: inset 3px 0 #5bd0c4; }
+.dark .admin-search-preview .text-muted-foreground { color: #b5d0ce; }
+@media (prefers-reduced-motion: reduce) { .admin-nav-item, .admin-overview-card, .admin-search-result, .admin-section-search input { transition: none; } }
 .admin-page-heading input:focus { transform: translateY(-1px); }
 @keyframes admin-page-in { from { opacity: 0; transform: translateY(8px) scale(.99); } to { opacity: 1; transform: translateY(0) scale(1); } }
 @media (prefers-reduced-motion: reduce) { .admin-page-heading { animation: none; } .admin-page-heading input:focus { transform: none; } }
