@@ -19,7 +19,7 @@ export function ShopNavbar() {
     <header className="site-header site-header-light sticky top-4 z-40 mx-3 rounded-full border px-3 py-2.5 text-foreground md:top-5 md:mx-auto md:px-4">
       <div className="flex items-center justify-between gap-4">
         <Link href="/" className="flex shrink-0 items-center gap-2.5" aria-label="Fazco home">
-          <img src="/fazco-logo.png" alt="Fazco logo" className="size-9 rounded-full object-cover ring-1 ring-white/35" />
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Untitled-uQ7iej7P8l7b4r87LiD7TgjwlezFYp.png" alt="Fazco logo" className="size-9 rounded-full object-cover ring-1 ring-white/35" />
           <span className="hidden text-sm font-semibold tracking-[.22em] sm:block">FAZCO</span>
         </Link>
         <nav className="site-nav glass-nav hidden items-center gap-1 rounded-full p-1 text-sm md:flex" aria-label="Primary navigation">
