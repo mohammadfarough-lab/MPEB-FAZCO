@@ -16,13 +16,13 @@ export function ShopNavbar() {
   const close = () => setOpen(false)
 
   return (
-    <header className="site-header sticky top-4 z-40 mx-3 rounded-full border border-white/20 bg-[#071c22]/55 px-4 py-3 text-white shadow-[0_18px_70px_rgba(3,17,21,.24)] backdrop-blur-2xl md:top-5 md:mx-auto md:px-5">
+    <header className="site-header site-header-light sticky top-4 z-40 mx-3 rounded-full border px-3 py-2.5 text-foreground md:top-5 md:mx-auto md:px-4">
       <div className="flex items-center justify-between gap-4">
         <Link href="/" className="flex shrink-0 items-center gap-2.5" aria-label="Fazco home">
-          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/photo_2_2026-07-12_18-43-01-al0Dj96HxHHDIA9rxM6hQR2SP0I5mp.jpg" alt="Fazco logo" className="size-9 rounded-full object-cover ring-1 ring-white/35" />
+          <img src="/fazco-logo.png" alt="Fazco logo" className="size-9 rounded-full object-cover ring-1 ring-white/35" />
           <span className="hidden text-sm font-semibold tracking-[.22em] sm:block">FAZCO</span>
         </Link>
-        <nav className="glass-nav hidden items-center gap-1 rounded-full border border-white/10 bg-white/[.06] p-1 text-sm md:flex" aria-label="Primary navigation">
+        <nav className="site-nav glass-nav hidden items-center gap-1 rounded-full p-1 text-sm md:flex" aria-label="Primary navigation">
           {links.map(([label, href]) => <Link key={label} href={href} onClick={close} className={`glass-nav-link ${label === 'Shop' ? 'text-primary' : ''}`}>{label}</Link>)}
         </nav>
         <div className="flex items-center gap-2">
@@ -33,7 +33,7 @@ export function ShopNavbar() {
           </button>
         </div>
       </div>
-      {open && <nav id="shop-mobile-navigation" className="glass-mobile-menu absolute inset-x-2 top-[calc(100%+0.65rem)] grid gap-1 rounded-3xl border border-white/20 p-2 text-sm md:hidden" aria-label="Mobile primary navigation">
+      {open && <nav id="shop-mobile-navigation" className="glass-mobile-menu site-mobile-menu absolute inset-x-2 top-[calc(100%+0.65rem)] grid gap-1 rounded-3xl border p-2 text-sm md:hidden" aria-label="Mobile primary navigation">
         {links.map(([label, href]) => <Link key={label} href={href} onClick={close} className={`glass-nav-link w-full justify-start ${label === 'Shop' ? 'text-primary' : ''}`}>{label}</Link>)}
         <Link href="/cart" onClick={close} className="glass-nav-link w-full justify-start">Cart</Link>
         <div className="border-t border-white/10 px-2 pt-2"><AuthNav /></div>
