@@ -119,6 +119,23 @@ export const products = pgTable('products', {
   updatedAt: timestamp('updatedAt').notNull().defaultNow(),
 })
 
+export const carts = pgTable('carts', {
+  id: text('id').primaryKey(),
+  userId: text('user_id'),
+  guestToken: text('guest_token'),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow(),
+})
+
+export const cartItems = pgTable('cart_items', {
+  id: text('id').primaryKey(),
+  cartId: text('cart_id').notNull().references(() => carts.id, { onDelete: 'cascade' }),
+  productId: text('product_id').notNull(),
+  quantity: integer('quantity').notNull().default(1),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow(),
+})
+
 export const orders = pgTable('orders', {
   id: text('id').primaryKey(),
   userId: text('userId').notNull(),
