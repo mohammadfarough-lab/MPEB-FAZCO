@@ -41,17 +41,20 @@ export async function POST(request: Request) {
   const body = await request.json().catch(() => null) as { productId?: string; quantity?: number } | null
   if (!body?.productId || !Number.isInteger(body.quantity ?? 1) || (body.quantity ?? 1) < 1) return Response.json({ error: 'Invalid product or quantity' }, { status: 400 })
   const { cart, identity } = await getCart()
-  const product = (await db.select({ id: products.id, active: products.active }).from(products).where(eq(products.id, body.productId)).limit(1))[0]
+  const product = (await db.select({ id: products.id, active: products.active, stock: products.stock }).from(products).where(eq(products.id, body.productId)).limit(1))[0]
   if (!product?.active) return Response.json({ error: 'Product unavailable' }, { status: 404 })
   const quantity = body.quantity ?? 1
+  if (quantity > product.stock) return withCookie(Response.json({ error: `Only ${product.stock} available.` }, { status: 409 }), identity.setCookie)
   await db.insert(cartItems).values({ id: crypto.randomUUID(), cartId: cart.id, productId: body.productId, quantity }).onConflictDoUpdate({ target: [cartItems.cartId, cartItems.productId], set: { quantity: sql`${cartItems.quantity} + ${quantity}`, updatedAt: new Date() } })
-  return withCookie(Response.json({ ok: true }), identity.setCookie)
+  return withCookie(Response.json({ ok: true, stock: product.stock }), identity.setCookie)
 }
 
 export async function PATCH(request: Request) {
   const body = await request.json().catch(() => null) as { productId?: string; quantity?: number } | null
   if (!body?.productId || !Number.isInteger(body.quantity) || body.quantity < 1) return Response.json({ error: 'Invalid quantity' }, { status: 400 })
   const { cart } = await getCart()
+  const product = (await db.select({ stock: products.stock }).from(products).where(eq(products.id, body.productId)).limit(1))[0]
+  if (!product || body.quantity > product.stock) return Response.json({ error: `Only ${product?.stock ?? 0} available.` }, { status: 409 })
   await db.update(cartItems).set({ quantity: body.quantity, updatedAt: new Date() }).where(and(eq(cartItems.cartId, cart.id), eq(cartItems.productId, body.productId)))
   return Response.json({ ok: true })
 }
